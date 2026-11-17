@@ -1,0 +1,33 @@
+# Private data and local tooling
+.env
+.env.*
+!.env.example
+private/
+.review/
+node_modules/
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+*.pem
+*.key
+*credentials*
+
+# VM images and private coursework documents are not portfolio assets.
+*.vmdk
+*.vmx
+*.vmem
+*.vmss
+*.nvram
+*.iso
+*.ova
+*.ovf
+*.zip
+*.pdf
+*.docx
+
+# Local browser checks and screenshots
+test-results/
+playwright-report/
