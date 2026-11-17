@@ -20,6 +20,10 @@ python scripts/build_site.py
 python scripts/check_site.py
 ```
 
+The original gradient/contour SVG can be regenerated with `python scripts/build_visuals.py`. `assets/portfolio.css` defines the shared components; `assets/signal-design.css` defines the visual theme, aligned reading grids and justified prose. Generated pages use content-versioned stylesheet/script URLs to avoid stale assets after a revision.
+
+The decorative hero animation can be paused with its button. It respects reduced-motion preferences and pauses when offscreen or when the tab is hidden. The SVG remains available as a static background without JavaScript. Inspiration for the large typography and engineering linework came from [Pier Gorelli's portfolio](https://piergorelli.com/); the artwork and implementation here are original.
+
 GitHub Pages serves `main` from the repository root. The feature-branch pull request records how the portfolio was assembled. Original evidence and its SHA-256 manifest are kept alongside each project; assistant-operated captures are identified in the write-ups.
 
 The Web Vuln Lab case study includes an access-policy illustration explaining its source; it does not send a request or run a security test. The homepage introduces the portfolio owner and provides project/contact links. Archivo and Space Grotesk are served locally with their OFL licenses in `assets/fonts/`.
