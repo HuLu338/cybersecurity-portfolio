@@ -11,6 +11,7 @@ The published addresses `192.168.77.10` and `192.168.77.20` identify private lab
 - Project evidence notes distinguish learner-supplied captures from assistant-operated captures and retain the recorded dates.
 - GitHub account authentication and other local settings are never stored in this repository.
 - New software case studies link to public repository snapshots and distinguish inspected assertions from newly executed tests. The Web Vuln Lab policy illustration runs only a small explanatory UI on its project page; it does not call a lab API.
+- The home page stage repeats that case as a scroll-driven diagram. It is drawn from the same policy description and test assertions; it sends no request, executes no code and shows no live result.
 - Known prototype limits are stated in each case study, including simulated identity, administrative API-key use and further deployment hardening. Private repositories and upstream forks are not represented as original public projects.
 
 ## Acknowledgements

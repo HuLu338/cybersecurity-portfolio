@@ -65,7 +65,7 @@ document.querySelectorAll('[data-policy]').forEach(button => {
 const filters = document.querySelector('.filters');
 if (filters) {
   filters.hidden = false;
-  const cards = [...document.querySelectorAll('.project-card')];
+  const cards = [...document.querySelectorAll('#projects [data-category]')];
   filters.querySelectorAll('[data-filter]').forEach(button => {
     button.addEventListener('click', () => {
       filters.querySelectorAll('[data-filter]').forEach(item => item.setAttribute('aria-pressed', String(item === button)));
@@ -73,6 +73,7 @@ if (filters) {
       cards.forEach(card => { card.hidden = selected !== 'All work' && card.dataset.category !== selected; });
       const count = cards.filter(card => !card.hidden).length;
       document.querySelector('.filter-count').textContent = `Showing ${count} project${count === 1 ? '' : 's'}`;
+      document.dispatchEvent(new CustomEvent('portfolio:filterchange'));
     });
   });
 }

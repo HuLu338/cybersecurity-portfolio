@@ -31,3 +31,6 @@ Thumbs.db
 # Local browser checks and screenshots
 test-results/
 playwright-report/
+
+# Local agent workspace notes (not published)
+.workbuddy/
