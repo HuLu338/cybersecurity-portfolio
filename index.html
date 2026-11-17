@@ -22,7 +22,7 @@
 <p class="stage-meter" aria-hidden="true"><span></span></p>
 <p class="stage-step-note"><span class="note-build">The diagram builds as you scroll.</span><span class="note-jump">Choose a stage to jump to its illustration.</span></p>
 </div>
-<p class="stage-links"><a class="stage-primary" href="projects/web-vuln-lab/">Read the case study <span aria-hidden="true">→</span></a><a class="stage-source" href="https://github.com/HuLu338/web-vuln-lab-secure-remediation" rel="noopener noreferrer">Source at the pinned commit</a></p>
+<p class="stage-links"><a class="stage-primary" href="projects/web-vuln-lab/">Read the case study <span aria-hidden="true">→</span></a><a class="stage-source" href="https://github.com/HuLu338/web-vuln-lab-secure-remediation/tree/2f561e57c0d7defa48ea3a41fe4c16abfe213e57" rel="noopener noreferrer">Source at the pinned commit</a></p>
 </div>
 <figure class="stage-scene" id="stage-scene">
 <div class="scene-top"><p class="scene-tag"><span>Access-control example</span><span class="scene-tag-note">simplified diagram</span></p>
@@ -71,14 +71,14 @@ return file;  // no owner check</code></pre>
 <div class="detail" id="stage-detail-3" data-step="3" role="tabpanel" aria-labelledby="stage-tab-3" tabindex="0">
 <p class="detail-kicker"><span aria-hidden="true">03</span>Evidence</p>
 <h4>Allowed and denied are both checked</h4>
-<table class="evidence-matrix"><caption>Expected behavior from the existing test assertions</caption>
+<table class="evidence-matrix"><caption>Expected behavior from source and existing assertions</caption>
 <thead><tr><th scope="col">Caller</th><th scope="col">Expected</th><th scope="col">Case</th></tr></thead>
 <tbody>
 <tr><th scope="row">Owner</th><td class="res ok">200 OK</td><td>own file</td></tr>
 <tr><th scope="row">Other user</th><td class="res no">403</td><td>refused</td></tr>
 <tr><th scope="row">Admin</th><td class="res ok">200 OK</td><td>any file</td></tr>
 </tbody></table>
-<p class="detail-note">Seven scenarios are described in AccessControlIntegrationTest. They were read for this page; no test was re-run here.</p>
+<p class="detail-note">AuthorizationService allows admin file access; it has no separate assertion in the seven-scenario integration class. No test was re-run here.</p>
 </div>
 </div>
 <figcaption>The same request at three stages. Diagram and code are simplified; this page neither sends a request nor runs a test.</figcaption>

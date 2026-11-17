@@ -119,19 +119,19 @@ return file;  // no owner check</code></pre>
 <div class="detail" id="stage-detail-3" data-step="3" role="tabpanel" aria-labelledby="stage-tab-3" tabindex="0">
 <p class="detail-kicker"><span aria-hidden="true">03</span>Evidence</p>
 <h4>Allowed and denied are both checked</h4>
-<table class="evidence-matrix"><caption>Expected behavior from the existing test assertions</caption>
+<table class="evidence-matrix"><caption>Expected behavior from source and existing assertions</caption>
 <thead><tr><th scope="col">Caller</th><th scope="col">Expected</th><th scope="col">Case</th></tr></thead>
 <tbody>
 <tr><th scope="row">Owner</th><td class="res ok">200 OK</td><td>own file</td></tr>
 <tr><th scope="row">Other user</th><td class="res no">403</td><td>refused</td></tr>
 <tr><th scope="row">Admin</th><td class="res ok">200 OK</td><td>any file</td></tr>
 </tbody></table>
-<p class="detail-note">Seven scenarios are described in AccessControlIntegrationTest. They were read for this page; no test was re-run here.</p>
+<p class="detail-note">AuthorizationService allows admin file access; it has no separate assertion in the seven-scenario integration class. No test was re-run here.</p>
 </div>
 </div>
 <figcaption>The same request at three stages. Diagram and code are simplified; this page neither sends a request nor runs a test.</figcaption>
 </figure>
-</div></div></div></div>''').replace('@@TITLE@@', E(p['title'])).replace('@@SUB@@', E(p['subtitle'])).replace('@@SOURCE@@', E(p['source'], quote=True))
+</div></div></div></div>''').replace('@@TITLE@@', E(p['title'])).replace('@@SUB@@', E(p['subtitle'])).replace('@@SOURCE@@', E(p['source_snapshot'], quote=True))
 
     site = head('Application security portfolio', home=True) + header(home=True)
     site += '''<main id="main"><section class="hero" id="top" aria-label="Introduction" data-motion="paused"><div class="hero-art" aria-hidden="true"><div class="hero-art-field"></div></div><div class="hero-gridlines" aria-hidden="true"></div><div class="wrap hero-inner"><h1>Code deserves<br>a closer look.</h1><p class="hero-intro">Master of Cyber Security student at Universiti Malaya, focusing on application security and secure software development.</p><div class="actions hero-actions"><a class="button" href="#projects">Explore projects</a><a class="button secondary" href="#contact">Contact me</a></div></div><div class="wrap hero-controls"><a class="scroll-link" href="#about">Meet the person behind the code <span aria-hidden="true">↓</span></a><button class="motion-toggle" aria-label="Background animation" aria-pressed="false" hidden><span class="motion-icon" aria-hidden="true"></span><span class="motion-label">Play motion</span></button></div></section>'''
