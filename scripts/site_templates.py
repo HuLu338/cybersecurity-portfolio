@@ -1,20 +1,25 @@
 """Templates shared by the portfolio home page and five case studies."""
 import csv
 import html
+import hashlib
 import json
 
 E = html.escape
 
 def build(root, profile, journey, counts, inline, markdown):
     projects = json.loads((root / 'content/projects.json').read_text(encoding='utf-8'))
+    def asset(path, prefix=''):
+        version=hashlib.sha256((root/path).read_bytes()).hexdigest()[:12]
+        return prefix+path+'?v='+version
     def head(title, prefix=''):
         return f'''<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="{E(title)}. Application security, software projects and course evidence by Gong Bingyan.">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self'; font-src 'self'; script-src 'self'; style-src 'self'; base-uri 'self'; form-action 'none'; object-src 'none'">
-<meta name="color-scheme" content="light"><meta name="theme-color" content="#f3f6fa"><title>{E(title)} | Gong Bingyan</title>
-<link rel="icon" href="{prefix}assets/images/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="{prefix}assets/portfolio.css">
-<link rel="preload" href="{prefix}assets/fonts/archivo.woff2" as="font" type="font/woff2" crossorigin><script src="{prefix}assets/portfolio.js" defer></script></head>
+<meta name="color-scheme" content="light"><meta name="theme-color" content="#f6f7f2"><title>{E(title)} | Gong Bingyan</title>
+<link rel="icon" href="{prefix}assets/images/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="{asset('assets/portfolio.css',prefix)}">
+<link rel="stylesheet" href="{asset('assets/signal-design.css',prefix)}">
+<link rel="preload" href="{prefix}assets/fonts/archivo.woff2" as="font" type="font/woff2" crossorigin><script src="{asset('assets/portfolio.js',prefix)}" defer></script></head>
 <body><a class="skip-link" href="#main">Skip to content</a>'''
 
     def header(prefix='', home=False):
@@ -46,7 +51,7 @@ def build(root, profile, journey, counts, inline, markdown):
         return '<div class="scan-art"><span>Saved TCP scan</span><strong>23 open <i>/</i> 977 closed</strong><small>1,000 common ports · recorded run</small></div>'
 
     site = head('Application security portfolio') + header(home=True)
-    site += '''<main id="main"><section class="hero" id="top" aria-label="Introduction"><div class="wrap hero-inner"><h1>A developer’s approach<br>to application security.</h1><p class="hero-intro">Master of Cyber Security student at Universiti Malaya, focusing on application security and secure software development.</p><div class="actions hero-actions"><a class="button" href="#projects">Explore projects</a><a class="button secondary" href="#contact">Contact me</a></div></div></section>'''
+    site += '''<main id="main"><section class="hero" id="top" aria-label="Introduction" data-motion="paused"><div class="hero-art" aria-hidden="true"></div><div class="hero-gridlines" aria-hidden="true"></div><div class="wrap hero-inner"><h1>Code deserves<br>a closer look.</h1><p class="hero-intro">Master of Cyber Security student at Universiti Malaya, focusing on application security and secure software development.</p><div class="actions hero-actions"><a class="button" href="#projects">Explore projects</a><a class="button secondary" href="#contact">Contact me</a></div></div><div class="wrap hero-controls"><a class="scroll-link" href="#about">Meet the person behind the code <span aria-hidden="true">↓</span></a><button class="motion-toggle" aria-label="Background animation" aria-pressed="false" hidden><span class="motion-icon" aria-hidden="true"></span><span class="motion-label">Play motion</span></button></div></section>'''
     site += section('about','Software experience.<br>Security questions.','A background in development, and a growing focus on how applications should behave at their boundaries.')
     site += '<div class="about-grid"><div class="prose" data-word-section="about">' + paras(profile['about']) + '</div><dl class="profile-facts"><div><dt>Currently</dt><dd>Master of Cyber Security<br>Universiti Malaya</dd></div><div><dt>Career direction</dt><dd>Junior application security<br>Security testing</dd></div><div><dt>Based in</dt><dd>Malaysia</dd></div><div><dt>On GitHub</dt><dd><a href="https://github.com/HuLu338">HuLu338</a></dd></div></dl></div></div></section>'
     site += section('projects','Selected work','Three existing software projects and two course labs. Each case study links the explanation to code, test assertions or original records.')

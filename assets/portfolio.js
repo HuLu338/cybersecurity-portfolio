@@ -1,6 +1,31 @@
 'use strict';
 document.documentElement.classList.add('js');
 
+const motionHero = document.querySelector('.hero[data-motion]');
+const motionButton = document.querySelector('.motion-toggle');
+if (motionHero && motionButton) {
+  const preference = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let requested = !preference.matches;
+  let visible = true;
+  const updateMotion = () => {
+    motionHero.dataset.motion = requested && visible && !document.hidden && !preference.matches ? 'running' : 'paused';
+    motionButton.hidden = preference.matches;
+    motionButton.setAttribute('aria-pressed', String(requested));
+    motionButton.querySelector('.motion-label').textContent = requested ? 'Pause motion' : 'Play motion';
+  };
+  motionButton.addEventListener('click', () => { requested = !requested; updateMotion(); });
+  preference.addEventListener('change', () => { requested = !preference.matches; updateMotion(); });
+  document.addEventListener('visibilitychange', updateMotion);
+  if ('IntersectionObserver' in window) {
+    const visibility = new IntersectionObserver(entries => {
+      visible = entries[0].isIntersecting && entries[0].intersectionRatio >= .04;
+      updateMotion();
+    }, {threshold:[0,.04],rootMargin:'-80px 0px 0px'});
+    visibility.observe(motionHero);
+  }
+  updateMotion();
+}
+
 const menu = document.querySelector('.nav-toggle');
 const nav = document.querySelector('.site-nav');
 if (menu && nav) {
