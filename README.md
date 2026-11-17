@@ -22,4 +22,4 @@ python scripts/check_site.py
 
 GitHub Pages serves `main` from the repository root. The feature-branch pull request records how the portfolio was assembled. Original evidence and its SHA-256 manifest are kept alongside each project; assistant-operated captures are identified in the write-ups.
 
-The access-policy illustration explains the Web Vuln Lab source; it does not send a request or run a security test. Archivo and Space Grotesk are served locally with their OFL licenses in `assets/fonts/`.
+The Web Vuln Lab case study includes an access-policy illustration explaining its source; it does not send a request or run a security test. The homepage introduces the portfolio owner and provides project/contact links. Archivo and Space Grotesk are served locally with their OFL licenses in `assets/fonts/`.
