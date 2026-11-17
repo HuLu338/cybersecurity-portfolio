@@ -1,0 +1,24 @@
+{
+  "name": "Gong Bingyan",
+  "github": "HuLu338",
+  "linkedin": "https://www.linkedin.com/in/bingyan0712/",
+  "email": "g504817771@gmail.com",
+  "about": [
+    "I am Gong Bingyan, a Master of Cyber Security student at Universiti Malaya. My career focus is application security. I am interested in how software handles requests, permissions and data, and how developers can check that a repair works.",
+    "My background includes computing study, API and database projects, and an IT support internship. I have worked with Go, Python and Java and have used Linux and Docker in project work. These are foundations for learning, rather than a claim of professional AppSec experience.",
+    "In WQE7001, I am documenting an isolated Kali and Metasploitable lab and an Nmap service-discovery exercise. I use these projects to connect network observations with clear explanations and next steps. I want my portfolio to show evidence that others can inspect and reproduce. My next aim is to move from finding exposed services to testing, fixing and retesting weaknesses in my own applications."
+  ],
+  "career": [
+    "My target is a junior application security or security testing role. I want to work with developers to understand a weakness, agree on a repair and check the result. My computing background gives me a starting point, but I still need stronger evidence of practical AppSec skills.",
+    "My next steps are to strengthen Linux and networking foundations, practise web/API authorization testing in an owned application, and document code repairs with repeatable tests. By February 2027, I aim to publish or improve a GitHub project that shows two issue, repair and retest cases, with setup instructions and clear results.",
+    "I will seek feedback on whether the work is correct and reproducible. GitHub stars can show interest, but tests, useful reviews and a verified repair will be my main quality checks. This is a development plan, not a claim that I already have professional AppSec experience."
+  ],
+  "skills": [
+    {"name":"Linux and virtual labs","level":"Working knowledge","description":"Guest identity, addresses, routes and basic command compatibility in the course lab.","link":"projects/virtual-lab-setup/","evidence":"View lab evidence"},
+    {"name":"Networking fundamentals","level":"Working knowledge","description":"Private addressing, TCP listeners and the difference between reachability and network isolation.","link":"projects/virtual-lab-setup/","evidence":"See the isolation checks"},
+    {"name":"Nmap service discovery","level":"Foundational practice","description":"TCP connect scanning, saved output and careful interpretation of uncertain service labels.","link":"projects/nmap-service-scan/","evidence":"Read the scan analysis"},
+    {"name":"Programming and APIs","level":"Working knowledge","description":"Go, Python and Java, plus API/database project background recorded in my resume.","link":"https://github.com/HuLu338?tab=repositories","evidence":"Browse development work"},
+    {"name":"Application security","level":"Beginner","description":"Building knowledge of HTTP, authorization, threat modeling and repair verification.","link":"#career","evidence":"Read my development plan"},
+    {"name":"Git and GitHub","level":"Foundational practice","description":"Documenting changes through commits, a feature branch, a pull request and a submission release.","link":"https://github.com/HuLu338/cybersecurity-portfolio","evidence":"Inspect this repository"}
+  ]
+}

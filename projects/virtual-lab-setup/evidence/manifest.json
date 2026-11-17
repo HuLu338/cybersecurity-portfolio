@@ -1,0 +1,24 @@
+{
+  "evidence_refresh": "2026-11-04",
+  "notes": "Guest timestamps retained. Screenshots selected for publication; no image content repainted.",
+  "files": [
+    {
+      "file": "target-identity.png",
+      "sha256": "ce4f15e7bdbc0ebbb2cf3d507dbf33a1dd9a4b635dfe86e09042af5e911a6028",
+      "collection": "Learner-supplied native target-console retake",
+      "bytes_edited": false
+    },
+    {
+      "file": "target-routes-and-ping.png",
+      "sha256": "2a1e5d5c15a607aed24c769464543b86fbf3f27233ae7ae64cb10d9a15c9500d",
+      "collection": "Learner-supplied native target-console retake",
+      "bytes_edited": false
+    },
+    {
+      "file": "kali-isolation-checks.png",
+      "sha256": "5d4293de6e691586f74919a18eba5e9e7fc29a55dd8ee37c5eb530db5d9d42ad",
+      "collection": "Assistant-operated live check on 4 November 2026; heading retained",
+      "bytes_edited": false
+    }
+  ]
+}

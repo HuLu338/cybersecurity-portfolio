@@ -1,0 +1,23 @@
+{
+  "files": [
+    {
+      "file": "nmap-results.nmap",
+      "sha256": "e17a74c507389afecd37159d76ad473b50f8ea3d96b152acce5141403db5f11e",
+      "collection": "Assistant-operated Nmap run, 4 November 2026",
+      "bytes_edited": false
+    },
+    {
+      "file": "nmap-first-segment.png",
+      "sha256": "7ff2545858a3a28bfddcce78b037823c7d4ebc9ce4b63cfbd1ef1f55e305fed8",
+      "collection": "Assistant-operated display of saved output",
+      "bytes_edited": false
+    },
+    {
+      "file": "nmap-completion.png",
+      "sha256": "7466b21e161eb1678425eb7a90e074a3b3dd9b6e40f8652232177e7ab921fc3c",
+      "collection": "Assistant-operated continuation of the same saved output",
+      "bytes_edited": false
+    }
+  ],
+  "notes": "Original scan and selected captures preserved. CSV and summary are derived records; no private host paths or VM configuration files published."
+}
