@@ -35,7 +35,7 @@ The secure file service throws HTTP 403 when its ownership/admin policy fails. T
 | [AccessControlIntegrationTest](https://github.com/HuLu338/web-vuln-lab-secure-remediation/blob/2f561e57c0d7defa48ea3a41fe4c16abfe213e57/src/test/java/web_vuln_lab/AccessControlIntegrationTest.java) | Seven concrete regression scenarios and expected outcomes |
 | [Vulnerability matrix](https://github.com/HuLu338/web-vuln-lab-secure-remediation/blob/2f561e57c0d7defa48ea3a41fe4c16abfe213e57/docs/vuln-matrix.md) | Access control, upload validation and stored-XSS case descriptions |
 
-The wider project also demonstrates upload restrictions and escaped comment rendering. The homepage illustration focuses only on the file-access policy above; it is not a live endpoint or newly captured test output.
+The wider project also demonstrates upload restrictions and escaped comment rendering. The illustration in this case study focuses only on the file-access policy above; it is not a live endpoint or newly captured test output.
 
 ## Reflection and next improvements
 

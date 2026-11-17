@@ -31,6 +31,9 @@ def build(root, profile, journey, counts, inline, markdown):
     def paras(items):
         return ''.join('<p>' + inline(p) + '</p>' for p in items)
 
+    def policy_demo():
+        return '''<aside class="policy-demo" aria-labelledby="policy-title"><div class="demo-top"><span>Policy illustration</span><span class="demo-mark" aria-hidden="true">{ }</span></div><h3 id="policy-title">Who can read this file?</h3><p class="demo-intro">The owner or an administrator. Try the policy below.</p><div class="policy-options" role="group" aria-label="Illustrate a caller's role"><button data-policy="owner" aria-pressed="true">Owner</button><button data-policy="other" aria-pressed="false">Other user</button><button data-policy="admin" aria-pressed="false">Admin</button></div><div class="request-flow"><div><span>Request</span><strong>Read file</strong></div><i aria-hidden="true">→</i><div><span>Policy</span><strong>Check access</strong></div></div><div class="policy-result" id="policy-result" role="status" aria-live="polite"><span class="result-status" id="policy-status">200 OK</span><strong id="policy-message">The owner can read the file.</strong></div><p class="demo-note">A source-based illustration, not a live request.</p><a href="#results-and-evidence">Read the code and test cases</a></aside>'''
+
     def art(slug):
         if slug == 'web-vuln-lab':
             return '<div class="code-art" aria-label="Simplified owner or administrator check"><span class="code-comment">The policy behind a file request</span><code><span class="code-blue">if</span> (ownerMatches || isAdmin) {<br>  <span class="code-blue">return</span> file;<br>}<br><span class="code-blue">throw</span> forbidden();</code><span class="art-caption">Simplified from the source</span></div>'
@@ -43,7 +46,7 @@ def build(root, profile, journey, counts, inline, markdown):
         return '<div class="scan-art"><span>Saved TCP scan</span><strong>23 open <i>/</i> 977 closed</strong><small>1,000 common ports · recorded run</small></div>'
 
     site = head('Application security portfolio') + header(home=True)
-    site += '''<main id="main"><div class="hero" id="top"><div class="wrap hero-grid"><div class="hero-content"><p class="intro-line"><span class="status-dot" aria-hidden="true"></span>Gong Bingyan / AppSec learner</p><h1>A developer’s approach to application security.</h1><p class="hero-copy">I study Cyber Security at Universiti Malaya and build software projects to understand access control, security findings and the evidence behind a repair.</p><div class="actions"><a class="button" href="#projects">Explore projects</a><a class="text-link" href="#about">Get to know me</a></div><p class="hero-footnote">Go, Java and web APIs. Learning in public, with the limits stated.</p></div><aside class="policy-demo" aria-labelledby="policy-title"><div class="demo-top"><span>Inside Web Vuln Lab</span><span class="demo-mark" aria-hidden="true">{ }</span></div><h2 id="policy-title">Who can read this file?</h2><p class="demo-intro">The owner or an administrator. Try the policy below.</p><div class="policy-options" role="group" aria-label="Illustrate a caller's role"><button data-policy="owner" aria-pressed="true">Owner</button><button data-policy="other" aria-pressed="false">Other user</button><button data-policy="admin" aria-pressed="false">Admin</button></div><div class="request-flow"><div><span>Request</span><strong>Read file</strong></div><i aria-hidden="true">→</i><div><span>Policy</span><strong>Check access</strong></div></div><div class="policy-result" id="policy-result" role="status" aria-live="polite"><span class="result-status" id="policy-status">200 OK</span><strong id="policy-message">The owner can read the file.</strong></div><p class="demo-note">A source-based illustration, not a live request.</p><a href="projects/web-vuln-lab/">Read the code and test cases</a></aside></div></div>'''
+    site += '''<main id="main"><section class="hero" id="top" aria-label="Introduction"><div class="wrap hero-inner"><h1>A developer’s approach<br>to application security.</h1><p class="hero-intro">Master of Cyber Security student at Universiti Malaya, focusing on application security and secure software development.</p><div class="actions hero-actions"><a class="button" href="#projects">Explore projects</a><a class="button secondary" href="#contact">Contact me</a></div></div></section>'''
     site += section('about','Software experience.<br>Security questions.','A background in development, and a growing focus on how applications should behave at their boundaries.')
     site += '<div class="about-grid"><div class="prose" data-word-section="about">' + paras(profile['about']) + '</div><dl class="profile-facts"><div><dt>Currently</dt><dd>Master of Cyber Security<br>Universiti Malaya</dd></div><div><dt>Career direction</dt><dd>Junior application security<br>Security testing</dd></div><div><dt>Based in</dt><dd>Malaysia</dd></div><div><dt>On GitHub</dt><dd><a href="https://github.com/HuLu338">HuLu338</a></dd></div></dl></div></div></section>'
     site += section('projects','Selected work','Three existing software projects and two course labs. Each case study links the explanation to code, test assertions or original records.')
@@ -69,6 +72,12 @@ def build(root, profile, journey, counts, inline, markdown):
     for p in projects:
         folder = root/'projects'/p['slug']
         content, toc = markdown((folder/'README.md').read_text(encoding='utf-8'),skip_h1=True)
+        if p['slug']=='web-vuln-lab':
+            marker='<h2 id="results-and-evidence">'
+            assert marker in content
+            content=content.replace(marker,'<h2 id="policy-illustration">An access decision, illustrated</h2>'+policy_demo()+marker,1)
+            position=next(i for i,(ident,_) in enumerate(toc) if ident=='results-and-evidence')
+            toc.insert(position,('policy-illustration','Policy illustration'))
         if p['slug']=='nmap-service-scan':
             with (folder/'evidence/open-ports.csv').open(encoding='utf-8',newline='') as f: ports=list(csv.DictReader(f))
             assert len(ports)==23
