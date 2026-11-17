@@ -1,5 +1,5 @@
 'use strict';
-/* Scroll narrative for the home page: pinned stage, reading ruler and hero handoff.
+/* Scroll narrative for the home page: pinned stage, reading ruler and section traces.
    Progress is measured once per layout change and applied with rAF, so scrolling
    only writes custom properties, opacity and transforms. */
 (() => {
@@ -14,6 +14,9 @@
   const tabs = stage ? [...stage.querySelectorAll('[role="tab"]')] : [];
   const steps = stage && stage.querySelector('.stage-steps');
   const hero = document.querySelector('.hero[data-motion]');
+  const transitions = [...document.querySelectorAll('.section-transition')].map(element => ({
+    element, top: 0, progress: null
+  }));
 
   /* Stage progress refers to the fraction of the pinned range that has scrolled past. */
   const state = { top: 0, offset: 0, distance: 1, step: 0, hidden: false, ready: false };
@@ -34,6 +37,10 @@
   const measurePage = () => {
     cache.scrollMax = Math.max(1, root.scrollHeight - window.innerHeight);
     cache.heroHeight = hero ? Math.max(1, hero.offsetHeight) : 1;
+    const y = window.scrollY;
+    transitions.forEach(transition => {
+      transition.top = transition.element.getBoundingClientRect().top + y;
+    });
   };
 
   const setStep = (step, focus = false) => {
@@ -115,6 +122,15 @@
       hero.style.setProperty('--hero-p', clamp(y / cache.heroHeight).toFixed(3));
     }
 
+    transitions.forEach(transition => {
+      // Finish the trace as the next heading arrives in the reading area.
+      const progress = reduce.matches ? 1 : clamp((y + innerHeight * .88 - transition.top) / (innerHeight * .48));
+      if (progress === transition.progress) return;
+      transition.progress = progress;
+      transition.element.style.setProperty('--transition-progress', progress.toFixed(4));
+      transition.element.classList.toggle('is-tracing', progress > 0 && progress < 1);
+    });
+
     if (!stage || state.hidden || isStatic()) return;
     const progress = clamp((state.offset - (state.top - y)) / state.distance);
     stage.style.setProperty('--p', progress.toFixed(4));
@@ -171,7 +187,7 @@
       observer.observe(track);
       observer.observe(document.body);
     }
-    const onModeChange = () => { applySemantics(); measureStage(); schedule(); };
+    const onModeChange = () => { applySemantics(); remeasure(); };
     reduce.addEventListener('change', onModeChange);
     narrow.addEventListener('change', onModeChange);
     addEventListener('hashchange', remeasure);
