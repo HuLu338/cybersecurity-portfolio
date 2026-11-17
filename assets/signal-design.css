@@ -16,7 +16,7 @@ body{background:var(--paper)}
 .button.secondary:hover{background:white;border-color:var(--ink)}
 .hero{
   position:relative;isolation:isolate;overflow:hidden;display:flex;flex-direction:column;
-  align-items:stretch;min-height:660px;padding:62px 0 0;background:var(--paper);
+  align-items:stretch;min-height:620px;padding:62px 0 0;background:var(--paper);
 }
 .hero::after{
   content:'';position:absolute;inset:0;z-index:1;pointer-events:none;

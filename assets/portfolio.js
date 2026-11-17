@@ -77,18 +77,30 @@ if (filters) {
   });
 }
 
-if ('IntersectionObserver' in window) {
-  const sections = document.querySelectorAll('main > section[id]');
-  const links = document.querySelectorAll('.site-nav a');
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        links.forEach(link => {
-          if (link.getAttribute('href') === `#${entry.target.id}`) link.setAttribute('aria-current', 'location');
-          else link.removeAttribute('aria-current');
-        });
-      }
+const pageSections = [...document.querySelectorAll('main > section[id]')];
+if (pageSections.length) {
+  const links = [...document.querySelectorAll('.site-nav a')];
+  let scheduled = false;
+  let activeId = null;
+  const updateActiveSection = () => {
+    scheduled = false;
+    let current = 'top';
+    const readingLine = Math.min(window.innerHeight * .3, 220);
+    pageSections.forEach(section => {
+      if (section.getBoundingClientRect().top <= readingLine) current = section.id;
     });
-  }, {rootMargin:'-15% 0px -65% 0px'});
-  sections.forEach(section => observer.observe(section));
+    if (current === activeId) return;
+    activeId = current;
+    links.forEach(link => {
+      if (link.getAttribute('href') === `#${current}`) link.setAttribute('aria-current', 'location');
+      else link.removeAttribute('aria-current');
+    });
+  };
+  const scheduleNavigationUpdate = () => {
+    if (!scheduled) { scheduled = true; requestAnimationFrame(updateActiveSection); }
+  };
+  window.addEventListener('scroll', scheduleNavigationUpdate, {passive:true});
+  window.addEventListener('resize', scheduleNavigationUpdate);
+  window.addEventListener('load', scheduleNavigationUpdate);
+  updateActiveSection();
 }
