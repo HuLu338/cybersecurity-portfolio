@@ -24,20 +24,26 @@ body{background:var(--paper)}
 }
 .hero-art{
   position:absolute;inset:-7%;z-index:0;pointer-events:none;
+  transform:translate3d(0,calc(var(--hero-p,0) * 54px),0);
+}
+.hero-art-field{
+  position:absolute;inset:0;
   background:url(images/signal-field.svg) center/cover no-repeat;
   transform-origin:72% 54%;animation:field-drift 24s ease-in-out infinite alternate;
   animation-play-state:paused;
 }
-.hero[data-motion=running] .hero-art{animation-play-state:running}
+.hero[data-motion=running] .hero-art-field{animation-play-state:running}
 .hero-gridlines{
   position:absolute;inset:0;pointer-events:none;z-index:1;opacity:.3;
   background:linear-gradient(90deg,transparent calc(100% - 1px),#71918b30 1px) center/310px 100%;
   mask-image:linear-gradient(90deg,transparent 15%,black 100%);
+  transform:translate3d(0,calc(var(--hero-p,0) * -38px),0);
 }
 .hero-inner{position:relative;z-index:2;flex:1;text-align:left;padding-bottom:43px}
 .hero-inner h1{
   font-size:clamp(76px,8.2vw,120px);font-weight:600;letter-spacing:-.065em;line-height:1.02;
   max-width:1000px;margin:0 0 31px;text-wrap:initial;
+  transform:translate3d(0,calc(var(--hero-p,0) * -20px),0);
 }
 .hero-intro{
   max-width:545px;margin:0 0 28px;font-size:18px;line-height:1.85;
@@ -139,7 +145,8 @@ code,pre,a{hyphens:none}
 @media(max-width:650px){
   :root{--reading-gap:28px;--reading-columns:1fr}
   .hero{padding-top:45px;min-height:0}
-  .hero-art{inset:-5% -55% -5% -5%;background-position:65% center;opacity:.85}
+  .hero-art{inset:-5% -55% -5% -5%;opacity:.85}
+  .hero-art-field{background-position:65% center}
   .hero::after{background:linear-gradient(180deg,#f6f7f2e8,#f6f7f2cc 40%,#f6f7f247 100%)}
   .hero-gridlines{background-size:180px 100%;opacity:.2}
   .hero-inner{padding-bottom:33px}
@@ -164,6 +171,7 @@ code,pre,a{hyphens:none}
   .project-hero{background-position:60% 40%}
 }
 @media(prefers-reduced-motion:reduce){
-  .hero-art{animation:none!important;transform:none}
+  .hero-art-field{animation:none!important}
+  .hero-art,.hero-inner h1{transform:none!important}
   .motion-toggle{display:none!important}
 }
