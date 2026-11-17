@@ -1,0 +1,132 @@
+{
+  "recorded_tool": "Nmap 7.95",
+  "evidence_refresh_date": "2026-11-04",
+  "log_start_local": "2026-11-03 23:12 EST",
+  "log_start_utc": "2026-11-04 04:12 UTC",
+  "target": "192.168.77.20",
+  "tcp_ports_checked": 1000,
+  "open": 23,
+  "closed": 977,
+  "seconds": 11.55,
+  "scan_type": "TCP connect with light service detection",
+  "udp_scanned": false,
+  "exploitation_performed": false,
+  "operator": "Codex-assisted run; learner reproduction confirmed earlier on 2026-11-02",
+  "ports": [
+    {
+      "port": 21,
+      "observed_service_version": "ftp; vsftpd 2.3.4",
+      "meaning_and_follow_up": "FTP file transfer; check authentication, transport protection and patch status."
+    },
+    {
+      "port": 22,
+      "observed_service_version": "ssh; OpenSSH 4.7p1 Debian 8ubuntu1 (protocol 2.0)",
+      "meaning_and_follow_up": "SSH remote administration; review authentication and supported algorithms."
+    },
+    {
+      "port": 23,
+      "observed_service_version": "telnet; Linux telnetd",
+      "meaning_and_follow_up": "Telnet terminal access; credentials and session traffic may be sent in clear text."
+    },
+    {
+      "port": 25,
+      "observed_service_version": "smtp; Postfix smtpd",
+      "meaning_and_follow_up": "SMTP mail service; check relay controls and whether this exposure is necessary."
+    },
+    {
+      "port": 53,
+      "observed_service_version": "domain; ISC BIND 9.4.2",
+      "meaning_and_follow_up": "DNS over TCP; DNS over UDP was outside this scan. Review allowed clients."
+    },
+    {
+      "port": 80,
+      "observed_service_version": "http; Apache httpd 2.2.8 ((Ubuntu) DAV/2)",
+      "meaning_and_follow_up": "HTTP web service; a separate 31 October check reached DVWA on this owned host."
+    },
+    {
+      "port": 111,
+      "observed_service_version": "rpcbind; version not identified",
+      "meaning_and_follow_up": "RPC service registration; it can reveal other RPC services to a client."
+    },
+    {
+      "port": 139,
+      "observed_service_version": "netbios-ssn; Samba smbd 3.X - 4.X (workgroup: WORKGROUP)",
+      "meaning_and_follow_up": "Samba/NetBIOS service; review share permissions and authentication."
+    },
+    {
+      "port": 445,
+      "observed_service_version": "netbios-ssn; Samba smbd 3.X - 4.X (workgroup: WORKGROUP)",
+      "meaning_and_follow_up": "Samba service as reported; review SMB exposure and access controls."
+    },
+    {
+      "port": 512,
+      "observed_service_version": "exec; netkit-rsh rexecd",
+      "meaning_and_follow_up": "Legacy remote execution service; review its authentication and necessity."
+    },
+    {
+      "port": 513,
+      "observed_service_version": "login; OpenBSD or Solaris rlogind",
+      "meaning_and_follow_up": "Tentative remote-login product label; the exact daemon and version require validation."
+    },
+    {
+      "port": 514,
+      "observed_service_version": "shell; Netkit rshd",
+      "meaning_and_follow_up": "Legacy remote shell service; review trust-based authentication and exposure."
+    },
+    {
+      "port": 1099,
+      "observed_service_version": "java-rmi; GNU Classpath grmiregistry",
+      "meaning_and_follow_up": "Java RMI registry; review remote-object exposure and application configuration."
+    },
+    {
+      "port": 1524,
+      "observed_service_version": "bindshell; Metasploitable root shell",
+      "meaning_and_follow_up": "Reported as a Metasploitable root shell; no separate exploitation test was run."
+    },
+    {
+      "port": 2049,
+      "observed_service_version": "rpcbind; version not identified",
+      "meaning_and_follow_up": "Reported as rpcbind by this light scan. Confirm RPC/NFS identity separately."
+    },
+    {
+      "port": 2121,
+      "observed_service_version": "ftp; ProFTPD 1.3.1",
+      "meaning_and_follow_up": "A second FTP server was identified; check the need for parallel file services."
+    },
+    {
+      "port": 3306,
+      "observed_service_version": "mysql; MySQL 5.0.51a-3ubuntu5",
+      "meaning_and_follow_up": "MySQL database listener; review client restrictions and account permissions."
+    },
+    {
+      "port": 5432,
+      "observed_service_version": "postgresql; PostgreSQL DB 8.3.0 - 8.3.7",
+      "meaning_and_follow_up": "PostgreSQL listener; review host-based access and database permissions."
+    },
+    {
+      "port": 5900,
+      "observed_service_version": "vnc; VNC (protocol 3.3)",
+      "meaning_and_follow_up": "VNC remote desktop; review authentication and access to the display."
+    },
+    {
+      "port": 6000,
+      "observed_service_version": "X11; (access denied)",
+      "meaning_and_follow_up": "X11 display service; the version probe reported access denied."
+    },
+    {
+      "port": 6667,
+      "observed_service_version": "irc; UnrealIRCd",
+      "meaning_and_follow_up": "IRC server; determine whether the application requires this service."
+    },
+    {
+      "port": 8009,
+      "observed_service_version": "ajp13; Apache Jserv (Protocol v1.3)",
+      "meaning_and_follow_up": "AJP application-server connector; restrict which front ends may connect."
+    },
+    {
+      "port": 8180,
+      "observed_service_version": "http; Apache Tomcat/Coyote JSP engine 1.1",
+      "meaning_and_follow_up": "Additional HTTP service identified as Tomcat/Coyote; review app access."
+    }
+  ]
+}

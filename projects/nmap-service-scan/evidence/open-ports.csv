@@ -1,0 +1,24 @@
+port,observed_service_version,meaning_and_follow_up
+21,ftp; vsftpd 2.3.4,"FTP file transfer; check authentication, transport protection and patch status."
+22,ssh; OpenSSH 4.7p1 Debian 8ubuntu1 (protocol 2.0),SSH remote administration; review authentication and supported algorithms.
+23,telnet; Linux telnetd,Telnet terminal access; credentials and session traffic may be sent in clear text.
+25,smtp; Postfix smtpd,SMTP mail service; check relay controls and whether this exposure is necessary.
+53,domain; ISC BIND 9.4.2,DNS over TCP; DNS over UDP was outside this scan. Review allowed clients.
+80,http; Apache httpd 2.2.8 ((Ubuntu) DAV/2),HTTP web service; a separate 31 October check reached DVWA on this owned host.
+111,rpcbind; version not identified,RPC service registration; it can reveal other RPC services to a client.
+139,netbios-ssn; Samba smbd 3.X - 4.X (workgroup: WORKGROUP),Samba/NetBIOS service; review share permissions and authentication.
+445,netbios-ssn; Samba smbd 3.X - 4.X (workgroup: WORKGROUP),Samba service as reported; review SMB exposure and access controls.
+512,exec; netkit-rsh rexecd,Legacy remote execution service; review its authentication and necessity.
+513,login; OpenBSD or Solaris rlogind,Tentative remote-login product label; the exact daemon and version require validation.
+514,shell; Netkit rshd,Legacy remote shell service; review trust-based authentication and exposure.
+1099,java-rmi; GNU Classpath grmiregistry,Java RMI registry; review remote-object exposure and application configuration.
+1524,bindshell; Metasploitable root shell,Reported as a Metasploitable root shell; no separate exploitation test was run.
+2049,rpcbind; version not identified,Reported as rpcbind by this light scan. Confirm RPC/NFS identity separately.
+2121,ftp; ProFTPD 1.3.1,A second FTP server was identified; check the need for parallel file services.
+3306,mysql; MySQL 5.0.51a-3ubuntu5,MySQL database listener; review client restrictions and account permissions.
+5432,postgresql; PostgreSQL DB 8.3.0 - 8.3.7,PostgreSQL listener; review host-based access and database permissions.
+5900,vnc; VNC (protocol 3.3),VNC remote desktop; review authentication and access to the display.
+6000,X11; (access denied),X11 display service; the version probe reported access denied.
+6667,irc; UnrealIRCd,IRC server; determine whether the application requires this service.
+8009,ajp13; Apache Jserv (Protocol v1.3),AJP application-server connector; restrict which front ends may connect.
+8180,http; Apache Tomcat/Coyote JSP engine 1.1,Additional HTTP service identified as Tomcat/Coyote; review app access.
