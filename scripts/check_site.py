@@ -21,6 +21,13 @@ class Page(HTMLParser):
 
 pages={p:Page(p.read_text(encoding='utf-8')) for p in ROOT.rglob('*.html')}
 assert set(['about','skills','training','projects','learning','career','contact'])<=pages[ROOT/'index.html'].ids
+projects=json.loads((ROOT/'content/projects.json').read_text(encoding='utf-8'))
+assert len(projects)==5
+for project in projects:
+    case=ROOT/'projects'/project['slug']
+    assert (case/'README.md').is_file() and (case/'index.html') in pages
+    for section in ['objective','method']:
+        assert section in pages[case/'index.html'].ids,(project['slug'],section)
 errors=[];checked=0
 for path,page in pages.items():
     for href in page.links:
@@ -66,4 +73,4 @@ for p in ROOT.rglob('*'):
         text=p.read_text(encoding='utf-8')
         for pattern in [r'gh[pousr]_[A-Za-z0-9]{20,}',r'-----BEGIN [A-Z ]*PRIVATE KEY-----',r'[A-Z]:\\Users\\',r'\b(?:matric(?:\s+number)?|student[\s_-]*id)\s*[:=]\s*\d{6,}\b']:
             assert not re.search(pattern,text),(p,'private artifact or secret pattern')
-print(json.dumps(dict(html_pages=len(pages),internal_links_checked=checked,word_counts=counts,evidence_hashes_verified=evidence_files,scan_summary='passed',public_artifact_guard='passed'),indent=2))
+print(json.dumps(dict(html_pages=len(pages),project_case_studies=len(projects),internal_links_checked=checked,word_counts=counts,evidence_hashes_verified=evidence_files,scan_summary='passed',public_artifact_guard='passed'),indent=2))

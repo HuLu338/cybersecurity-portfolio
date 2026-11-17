@@ -1,0 +1,14 @@
+[
+  {
+    "family": "Archivo",
+    "font_url": "https://fonts.gstatic.com/s/archivo/v25/k3kPo8UDI-1M0wlSV9XAw6lQkqWY8Q82sLydOxI.woff2",
+    "license_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/archivo/OFL.txt",
+    "bytes": 34928
+  },
+  {
+    "family": "Space Grotesk",
+    "font_url": "https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPbF4Cw.woff2",
+    "license_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/spacegrotesk/OFL.txt",
+    "bytes": 22288
+  }
+]
