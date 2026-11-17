@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 330" role="img" aria-labelledby="title desc">
+  <title id="title">Isolated two-guest training lab</title>
+  <desc id="desc">Kali at 192.168.77.10 and Metasploitable 2 at 192.168.77.20 share the private WQE7001-AppSec VMware LAN Segment. Recorded guest IPv4 routes have no default gateway.</desc>
+  <rect width="1000" height="330" rx="22" fill="#f1f4ed"/>
+  <path d="M115 65H885V266H115Z" fill="none" stroke="#a4b5a5" stroke-dasharray="7 8"/>
+  <text x="500" y="44" text-anchor="middle" fill="#304d3f" font-family="Arial,sans-serif" font-size="18" font-weight="700">VMware private LAN Segment · WQE7001-AppSec</text>
+  <rect x="165" y="98" width="265" height="116" rx="12" fill="#fffef8" stroke="#c1cdbd"/>
+  <rect x="570" y="98" width="265" height="116" rx="12" fill="#fffef8" stroke="#c1cdbd"/>
+  <path d="M447 155H553m-12-10 12 10-12 10m-82-20-12 10 12 10" fill="none" stroke="#547c5e" stroke-width="3"/>
+  <text x="297" y="136" text-anchor="middle" fill="#193d2c" font-family="Arial,sans-serif" font-size="25" font-weight="700">Kali Linux</text>
+  <text x="297" y="174" text-anchor="middle" fill="#47604f" font-family="Arial,sans-serif" font-size="20">192.168.77.10/24</text>
+  <text x="702" y="136" text-anchor="middle" fill="#193d2c" font-family="Arial,sans-serif" font-size="25" font-weight="700">Metasploitable 2</text>
+  <text x="702" y="174" text-anchor="middle" fill="#47604f" font-family="Arial,sans-serif" font-size="20">192.168.77.20/24</text>
+  <text x="500" y="244" text-anchor="middle" fill="#47604f" font-family="Arial,sans-serif" font-size="17">One active lab adapter each · target second adapter disabled</text>
+  <text x="500" y="301" text-anchor="middle" fill="#304d3f" font-family="Arial,sans-serif" font-size="18">No NAT or bridged experimental adapters · no guest IPv4 default gateway</text>
+</svg>
