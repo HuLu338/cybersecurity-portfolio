@@ -33,7 +33,13 @@ def build(root, profile, journey, counts, inline, markdown):
         return f'''<footer class="site-footer"><div class="wrap footer-inner"><div><strong>Gong Bingyan</strong><p>Application security learning, with code and evidence.</p></div><div><a href="https://github.com/{profile['github']}/cybersecurity-portfolio">Source &amp; Git history</a><a href="{prefix}SECURITY.md">Evidence &amp; contribution notes</a></div></div></footer></body></html>'''
 
     def section(ident, title, intro=''):
-        return f'<section class="section" id="{ident}" aria-labelledby="{ident}-title"><div class="wrap"><div class="section-head"><h2 id="{ident}-title">{title}</h2>' + (f'<p>{intro}</p>' if intro else '') + '</div>'
+        transition = (
+            '<div class="section-transition" aria-hidden="true"><div class="wrap transition-board">'
+            '<span class="transition-trace trace-upper"></span><span class="transition-trace trace-center"></span>'
+            '<span class="transition-trace trace-lower"></span><span class="trace-pad pad-start"></span>'
+            '<span class="trace-pad pad-end"></span><span class="trace-signal"></span></div></div>'
+        )
+        return f'<section class="section" id="{ident}" aria-labelledby="{ident}-title">{transition}<div class="wrap"><div class="section-head"><h2 id="{ident}-title">{title}</h2>' + (f'<p>{intro}</p>' if intro else '') + '</div>'
 
     def paras(items):
         return ''.join('<p>' + inline(p) + '</p>' for p in items)

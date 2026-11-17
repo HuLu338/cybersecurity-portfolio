@@ -7,6 +7,87 @@
 .read-progress{position:absolute;left:0;right:0;bottom:-1px;height:2px;overflow:hidden;pointer-events:none}
 .read-progress span{display:block;width:100%;height:100%;background:linear-gradient(90deg,#12665f,#7fa89b);transform:scaleX(var(--read,0));transform-origin:0 50%}
 
+/* A circuit trace leads into the next section, inside its existing spacing. */
+#main > .section{
+  padding-block-start:0;
+  border-top:0;
+}
+#main > .section:not(:last-child){padding-block-end:clamp(30px,3.1vw,48px)}
+.section-transition{
+  position:relative;
+  height:clamp(57px,6vw,90px);
+  pointer-events:none;
+}
+:is(#projects,#skills,#contact) > .section-transition{
+  background:linear-gradient(var(--transition-from,var(--paper)),transparent);
+}
+#skills > .section-transition{--transition-from:#eaf0e9}
+.transition-board{
+  --bend:clamp(8px,1.1vw,16px);
+  --trace-x:calc(6% + 88% * var(--transition-progress,1));
+  --trace-y:clamp(0,calc((var(--transition-progress,1) - .44) / .12),1);
+  position:relative;
+  height:100%;
+}
+.transition-board::before{
+  content:'';
+  position:absolute;
+  inset:8px 0;
+  background:radial-gradient(circle,#7a9f92 1px,transparent 1.3px) center / 15px 15px;
+  opacity:.23;
+  mask-image:radial-gradient(ellipse at center,#000 6%,transparent 72%);
+}
+:is(#projects,#training,#career) .transition-board{transform:scaleX(-1)}
+.transition-trace{
+  --upper:calc(50% - var(--bend));
+  --lower:calc(50% + var(--bend));
+  position:absolute;
+  inset:0;
+  background:#a2bbb0;
+  clip-path:polygon(
+    var(--start,6%) calc(var(--upper) - .65px),
+    44.72% calc(var(--upper) - .65px),
+    55.28% calc(var(--lower) - .65px),
+    var(--end,94%) calc(var(--lower) - .65px),
+    var(--end,94%) calc(var(--lower) + .65px),
+    55.28% calc(var(--lower) + .65px),
+    44.72% calc(var(--upper) + .65px),
+    var(--start,6%) calc(var(--upper) + .65px)
+  );
+}
+.trace-upper,.trace-lower{opacity:.6}
+.trace-upper{--start:15%;--end:88%;transform:translateY(-7px)}
+.trace-lower{--start:11%;--end:80%;transform:translateY(7px)}
+.trace-center::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(90deg,#7ba596,var(--blue) 54%,#538e81);
+  clip-path:inset(0 calc(100% - var(--trace-x)) 0 0);
+}
+.trace-pad,.trace-signal{
+  position:absolute;
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  transform:translate(-50%,-50%);
+}
+.trace-pad{border:1px solid #70998b;background:var(--paper)}
+.pad-start{left:6%;top:calc(50% - var(--bend))}
+.pad-end{left:94%;top:calc(50% + var(--bend))}
+.trace-signal{
+  left:var(--trace-x);
+  top:calc(50% - var(--bend) + 2 * var(--bend) * var(--trace-y));
+  background:var(--blue);
+  box-shadow:0 0 0 4px #12665f20;
+  opacity:0;
+}
+.section-transition.is-tracing .trace-signal{opacity:1}
+@media(prefers-reduced-motion:reduce){
+  .transition-board{--transition-progress:1!important}
+  .trace-signal{display:none}
+}
+
 /* ---------- pinned stage ---------- */
 .work-stage{
   --p:0;
